@@ -1,0 +1,61 @@
+todo:
+
+-auto logins
+    -prompts if you would like to create a new login
+        -saves to file
+    -uses account info to login automatically
+
+-auto dmg calculator
+    -checks current equipment bonuses on player
+    -gets current status effects on player
+        -hovers over player
+        -reads each status effect
+            -type of effects
+            -school type
+        - totals it for each school
+    -read all the cards
+        -gets dmg
+        -dmg type
+        -school type
+        -calcs dmg with status effects
+        -pip count
+        -calcs dmg per pip
+
+-auto trivia (every 24hrs does 10 of the trivias on each enabled account)
+    -logins to each account
+    -goes to trivia
+    -does ten that the answers are all accounted for
+        -store the answers for all of the trivia
+
+-auto gardener
+-auto fisher
+
+-perfect pet creator
+
+-farm gold
+
+-safe follow quest
+
+-refill potions
+    -go to wizard city if not already
+    -teleport to commons
+    -go to minigame (needs to take under 15mins to be useable during dungeons)
+    -auto minigame player (most likely the sliding one)
+    
+-clean inventory
+    -go home
+    -go to bank (grab all the stuff that needs to be sold)
+    -go to bazar
+        -go to wizard city
+        -go to commons
+        -go to shop dist
+        -go to olde lane
+        -go to building
+    -sell all non equiped or locked items
+    -if cant be auctioned feed to pet
+    
+
+-warp clean (try to keep under ~30 mins so you can go back to dungeons)
+    -set safe marker
+    -clean inventory
+    -refill potions
