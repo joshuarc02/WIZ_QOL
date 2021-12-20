@@ -1,4 +1,5 @@
 todo:
+-rename the main thing that opens everyting
 
 -auto logins
     -prompts if you would like to create a new login
