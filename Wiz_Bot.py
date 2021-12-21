@@ -89,7 +89,7 @@ class Wiz_Bot:
         while not cords:
             window = self.screenshot()
             cords = self.match_img(img, window)
-            time.sleep(.25)
+            time.sleep(.1)
         return cords
 
     def click_img(self, path):
@@ -171,12 +171,11 @@ class Wiz_Bot:
 
     def go_to_wiz_commons(self):
         self.set_active()
-        mr_licncoln = cv2.imread(Wiz_Bot.fix_img_path("mr_licncoln"))
         pyautogui.keyDown("w")
-        while not self.match_img(mr_licncoln, self.screenshot()):
-            time.sleep(.1)
+        self.wait_for_load("mr_licncoln")
         time.sleep(1)
         pyautogui.keyUp("w")
+        self.wait_for_load("home_warp")
         
     def press_key(key, t):
         pyautogui.keyDown(key)
@@ -185,7 +184,6 @@ class Wiz_Bot:
 
     def go_to_minigames(self):
         self.set_active()
-        self.wait_for_load("commons_roof")
         pyautogui.keyDown("w")
         Wiz_Bot.press_key("d", .3)
         time.sleep(1)
@@ -315,13 +313,65 @@ class Wiz_Bot:
         self.go_to_wiz_commons()
         self.go_to_minigames()
         self.select_potion_minigame()
-        #self.play_potion_motion(3)
+        self.play_potion_motion(3)
+        self.click_when_loaded("mini_x")
+
+    def go_to_myrella(self):
+        self.set_active()
+        pyautogui.keyDown("w")
+        time.sleep(1.65)
+        Wiz_Bot.press_key("a", .3)
+        time.sleep(8)
+        pyautogui.keyUp("w")
+
+    def open_fishing_castle(self):
+        self.set_active()
+        self.click_when_loaded("castle_tours")
+        pyautogui.press("x")
+        self.click_when_loaded("castle_favorites")
+        self.click_when_loaded("aero_village")
+
+    def go_to_fish(self):
+        self.set_active()
+        self.wait_for_load("world_gate")
+        Wiz_Bot.press_key("w", 3)
+        Wiz_Bot.press_key("a", .02)
+        Wiz_Bot.press_key("w", 3.5)
+        Wiz_Bot.press_key("d", .2)
+        Wiz_Bot.press_key("w", 1)
+        Wiz_Bot.press_key("a", .2)
+        Wiz_Bot.press_key("s", .1)
+        
+    def fishing(self):
+        self.click_img("fishing_spells")
+        self.click_img("fav_spells")
+        cancel_fish_spell = cv2.imread(Wiz_Bot.fix_img_path("cancel_fish_spell"))
+        while True:
+            self.click_when_loaded("cold_fish")
+            time.sleep(1)
+            if not self.match_img(cancel_fish_spell, self.screenshot()):
+                break
+            self.click_when_loaded("invoke_fish_spell")
+            time.sleep(.5)
+            
+
+
+    def auto_fish(self):
+        self.warp_home()
+        self.go_to_home_world_gate()
+        self.go_to_world("wizard_city")
+        self.go_to_wiz_commons()
+        self.go_to_myrella()
+        self.open_fishing_castle()
+        self.go_to_fish()
+        self.fishing()
         
 
 def main():
     wb = Wiz_Bot()
     wb.run()
     wb.auto_potion_up()
+    wb.auto_fish()
 
 
 
