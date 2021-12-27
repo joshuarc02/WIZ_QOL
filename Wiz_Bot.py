@@ -357,10 +357,10 @@ class Wiz_Bot:
 
 
     def auto_fish(self):
-        #self.warp_home()
-        #self.go_to_home_world_gate()
-        #self.go_to_world("wizard_city")
-        #self.go_to_wiz_commons()
+        self.warp_home()
+        self.go_to_home_world_gate()
+        self.go_to_world("wizard_city")
+        self.go_to_wiz_commons()
         self.go_to_myrella()
         self.open_fishing_castle()
         self.go_to_fish()
@@ -369,8 +369,8 @@ class Wiz_Bot:
 
 def main():
     wb = Wiz_Bot()
-    #wb.run()
-    #wb.auto_potion_up()
+    wb.run()
+    wb.auto_potion_up()
     wb.auto_fish()
 
 
